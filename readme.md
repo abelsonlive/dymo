@@ -18,11 +18,11 @@ pip install flask redis
 
 ## Setup
 * Startup redis:
-  * `redis-server`
+  * `$ redis-server`
 * Now, simply place the images you want to label in the `static/images` directory.  The filenames should be unique to each image and will be used as the primary key in the datastore.
 
 ## Run
-start up the UI:
+Start up the UI:
 ```
 python routes.py
 ```
