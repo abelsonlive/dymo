@@ -28,6 +28,46 @@ python routes.py
 ```
 And navigate to [`http://localhost:3030/`](http://localhost:3030/) for further instructions.
 
+## Data:
+
+Each item looks like this:
+```
+{
+    'roofs': [
+        {
+            'y': 347,
+            'x': 314,
+            'type': 'iron'
+        },
+        {
+            'y': 362,
+            'x': 10,
+            'type': 'thatched'
+        },
+        {
+            'y': 270,
+            'x': 119,
+            'type': 'thatched'
+        },
+        {
+            'y': 178,
+            'x': 186,
+            'type': 'thatched'
+        },
+        {
+            'y': 157,
+            'x': 175,
+            'type': 'thatched'
+        }
+    ],
+    'image': 'KE2013071948-grass.png',
+    'total': 5,
+    'number_thatched': 4,
+    'number_iron': 1
+}
+```
+
+
 ## Preview:
 
 ![screenshot](screenshot.png)
