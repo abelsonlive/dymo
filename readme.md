@@ -5,7 +5,7 @@ A `flask` app for labelling items in images with pixel positions.
 
 For now, this app is specific to a datakind/give-directly project, but it might be useful for other applications in the future.
 
-## Install
+## Clone
 ```
 git clone https://github.com/abelsonlive/labeller.git
 ``` 
@@ -17,7 +17,9 @@ pip install flask redis
 ```
 
 ## Setup
-Simply place the images you want to label in the `static/images` directory.  The filenames should be unique to each image and will be used as the primary key in the datastore.
+* Startup redis:
+  * `redis-server`
+* Now, simply place the images you want to label in the `static/images` directory.  The filenames should be unique to each image and will be used as the primary key in the datastore.
 
 ## Run
 start up the UI:
