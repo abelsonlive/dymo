@@ -1,7 +1,7 @@
-Labeller (need a new name)
+Dymo
 ============================
 
-A `flask` app for labelling items in images with pixel positions.
+A `flask` app for quickly labelling featuers in images and recording their pixel positions.
 
 For now, this app is specific to a datakind/give-directly project, but it might be useful for other applications in the future.
 
