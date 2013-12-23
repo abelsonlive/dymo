@@ -1,19 +1,19 @@
 Dymo
 ============================
 
-A `flask` app for quickly labelling featuers in images and recording their pixel positions.
+A `flask` app for quickly labeling featuers in images and recording their pixel positions.
 
 For now, this app is specific to a datakind/give-directly project, but it might be useful for other applications in the future.
 
 ## Clone
 ```
-git clone https://github.com/abelsonlive/labeller.git
+git clone https://github.com/abelsonlive/dymo.git
 ``` 
 
 ## Requirements
 Install `flask` and `redis`:
 ```
-pip install flask redis
+pip install -r requirements.txt
 ```
 
 ## Setup
