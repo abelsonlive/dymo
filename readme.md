@@ -28,4 +28,6 @@ python routes.py
 ```
 And navigate to [`http://localhost:3030/`](http://localhost:3030/) for further instructions.
 
+## Preview:
 
+![screenshot](screenshot.png)
