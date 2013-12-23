@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+  
+  <div id="wrapper">
+    <div id="left">
+      <p id='img-file-path'><strong>Image:</strong>
+        <a id="img-link" href="static/images/{{image}}" target="_blank">{{image}}</a><br/>
+        <strong>Number Left:</strong> {{images_left}}
+      </p>
+      <div id="img">
+        <img src="static/images/{{image}}">
+      </div>
+      <div id="form-wrapper">
+        <form method=post action="/label">
+          <button id="send" type="submit">
+            Submit
+          </button>
+          <div id="hidden-form">
+            <label for="data">data</label>
+            <input id="data" type="text" name="data">
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div id="right">
+      <p><strong>Instructions:</strong></p>
+      <div id="log">
+        <ul>
+          <li>Identify <span style='background-color:#788854;'><strong>thatch</strong></span> roofs by clicking on them.</li>
+          <li>Identify <span style='background-color:#a7b0ad;'><strong>iron</strong></span> roofs by shift+clicking on them.</li>
+          <li>If you need to restart, press 'Clear'.</li>
+          <li>When you're done with an image, press 'Submit'.</li>
+        </ul>
+        <p><strong>Labels:</strong></p>
+        <ul id="log-list"></ul>
+      </div>
+    </div>
+  </div>
+  
+{% endblock %}
