@@ -1,8 +1,14 @@
-# Labeller (need a new name)
+Labeller (need a new name)
 ============================
+
 A `flask` app for labelling items in images with pixel positions.
 
 For now, this app is specific to a datakind/give-directly project, but it might be useful for other applications in the future.
+
+## Install
+```
+git clone https://github.com/abelsonlive/labeller.git
+``` 
 
 ## Requirements
 Install `flask` and `redis`:

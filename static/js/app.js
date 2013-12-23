@@ -23,6 +23,29 @@
 
     console.log(img_data);
 
+    $('#clear').click(function() {
+
+        // reset label data
+        var iron_number = 0;
+        var thatch_number = 0;
+        var img_data = {};
+        img_data['roofs'] = [];
+        img_data['image'] = $('#img-link').text();
+        img_data['number_thatched'] = thatch_number;
+        img_data['number_iron'] = iron_number;
+        img_data['total'] = thatch_number + iron_number;
+
+        // remove markers
+        $('.marker').remove();
+
+        // remove logs
+        $('#log-list').empty();
+
+        
+        console.log(img_data);
+
+    });
+
     $('#img').click(function(e) {
       
       var offset = $(this).offset();
