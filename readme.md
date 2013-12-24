@@ -1,4 +1,4 @@
-Dymo
+![img](readme-img/logo.png)
 ============================
 
 A `flask` app for quickly labeling featuers in images and recording their pixel positions.
@@ -70,4 +70,4 @@ Each item looks like this:
 
 ## Preview:
 
-![screenshot](screenshot.png)
+![screenshot](readme-img/screenshot.png)
