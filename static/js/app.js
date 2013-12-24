@@ -21,7 +21,6 @@
 
     $('#data').val( JSON.stringify(img_data) );
 
-    console.log(img_data);
 
     $('#clear').click(function() {
 
@@ -41,8 +40,8 @@
         // remove logs
         $('#log-list').empty();
 
-        
-        console.log(img_data);
+        // remove data
+        $('#data').val( JSON.stringify(img_data) );
 
     });
 
@@ -105,6 +104,7 @@
         $('#log-list').append(thatch_log);
         
       }
+
       // update metadata for image
       img_data['image'] = $('#img-link').text();
       img_data['number_thatched'] = thatch_number;
@@ -119,8 +119,6 @@
 
       // update data input field
       $('#data').val( JSON.stringify(img_data) );
-
-      console.log(img_data);
 
     });
   });

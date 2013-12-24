@@ -23,8 +23,6 @@ def label_image():
   
   # parse form
   value = json.loads(request.form.copy()['data'])
-
-  print value
   
   # extract key
   key = value['image']
