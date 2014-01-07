@@ -29,7 +29,6 @@
         var thatch_number = 0;
         var img_data = {};
         img_data['roofs'] = [];
-        img_data['image'] = $('#img-link').text();
         img_data['number_thatched'] = thatch_number;
         img_data['number_iron'] = iron_number;
         img_data['total'] = thatch_number + iron_number;
@@ -49,7 +48,7 @@
       
       var offset = $(this).offset();
       
-      var x_abs = e.clientX ;
+      var x_abs = e.clientX;
       var y_abs = e.clientY;
       
       var x_img = x_abs - offset.left;
@@ -106,7 +105,6 @@
       }
 
       // update metadata for image
-      img_data['image'] = $('#img-link').text();
       img_data['number_thatched'] = thatch_number;
       img_data['number_iron'] = iron_number;
       img_data['total'] = thatch_number + iron_number;

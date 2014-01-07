@@ -47,7 +47,7 @@ def clear():
   [rdb.delete(k) for k in rdb.keys()]
 
 if __name__ == '__main__':
-  if len(sys.argv) > 0:  
+  if len(sys.argv) > 1:  
     if sys.argv[1] == 'dump':
       dump()
     elif sys.argv[1] == 'clear':
