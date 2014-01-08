@@ -2,8 +2,8 @@ from flask import Flask, render_template, request, redirect, url_for
 from random import choice
 import json, redis, os, sys
 
-# # list of images in the static folder
-# images = [i.strip() for i in os.listdir('static/images') if i != '' and i is not None]
+# list of images in the static folder
+images = [i.strip() for i in os.listdir('static/images') if i != '' and i is not None]
 
 # # initialize redis
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
