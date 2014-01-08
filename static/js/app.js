@@ -14,6 +14,7 @@
   $(document).ready(function() {
     
     // pre-populate data labels
+    img_data['user'] = $('#user').text();
     img_data['image'] = $('#img-link').text();
     img_data['number_thatched'] = thatch_number;
     img_data['number_iron'] = iron_number;

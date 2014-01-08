@@ -21,9 +21,11 @@ header h1.logo {
 }
 
 header h1.logo:hover {
-  color: #fc0;
+  color: #fff;
   text-decoration: none;
 }
+
+/* Center the body content */
 
 .container {
   width: 1000px;

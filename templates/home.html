@@ -4,10 +4,16 @@
   <div id="wrapper">
 
     <div id="left">
-      <p id='img-file-path'><strong>Image:</strong>
-        <a id="img-link" href="static/images/{{image}}" target="_blank">{{image}}</a><br/>
-        <strong>Number Left:</strong> {{images_left}}
-      </p>
+      User: 
+        <strong id="user">{{user}}</strong></br>
+      Image: 
+        <strong id='img_link'>
+          <a href="static/images/{{image}}" target="_blank">{{image}}</a>
+        </strong></br>
+      Number Left: 
+        <strong>
+          {{images_left}}
+        </strong>
       <div id="img">
         <img src="static/images/{{image}}">
       </div>
@@ -15,7 +21,7 @@
         Clear
       </button>
       <div id="form-wrapper">
-        <form method=post action="/label">
+        <form method=post action="/label/image/">
           <button id="send" type="submit">
             Submit
           </button>
@@ -28,7 +34,7 @@
     </div>
 
     <div id="right">
-      <p><strong>Instructions:</strong></p>
+      <strong>Instructions:</strong>
       <div id="log">
         <ul>
           <li>Identify <span style='background-color:#788854;'><strong>thatch</strong></span> roofs by clicking on them.</li>

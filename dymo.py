@@ -17,15 +17,25 @@ app.root_path = abspath(dirname(__file__))
 # index page
 @app.route('/')
 def index():
+  return render_template('index.html')
+
+@app.route('/<username>')
+def user_index(username):
 
   # serve a random image that we haven't labeled yet
   completed = rdb.keys()
   images_to_label = [i for i in images if i not in completed]
   image = choice(images_to_label)
-  return render_template('home.html', image = image, images_left = len(images_to_label))
+
+  return render_template(
+    'home.html',
+    user = username, 
+    image = image, 
+    images_left = len(images_to_label)
+  )
 
 # form post for label data
-@app.route('/label', methods=['POST'])
+@app.route('/label/image/', methods=['POST'])
 def label(): 
   
   # parse form
@@ -37,8 +47,10 @@ def label():
   # push to redis
   rdb.set(key, json.dumps(value))
 
-  # redirect to a new image
-  return redirect(url_for('index'))
+  # redirect to a new image for this user
+  user_url = url_for('user_index', username=value['user'])
+
+  return redirect(user_url)
 
 if __name__ == '__main__':
   port = int(os.environ.get("PORT", 5000))
