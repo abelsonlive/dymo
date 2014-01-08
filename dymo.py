@@ -10,6 +10,8 @@ images = [i.strip() for i in os.listdir('static/images') if i != '' and i is not
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 rdb = redis.from_url(redis_url)
 rdb.set("test", "woot")
+rdb.set("test2", "woot2")
+
 # intitialize app
 app = Flask(__name__)
 app.root_path = abspath(dirname(__file__))
@@ -29,8 +31,8 @@ def index():
   # image = choice(images_to_label)
   # return render_template('home.html', image = image, images_left = len(images_to_label))
 
-  v = rdb.get("test")
-  return v
+  v = rdb.keys
+  return " ".join(v)
 
 # form post for label data
 @app.route('/label', methods=['POST'])
