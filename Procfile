@@ -1,2 +1,1 @@
-web: python dymo.py
-heroku ps:scale web=1
+web: gunicorn dymo:app -b "0.0.0.0:$PORT" -w 3 
