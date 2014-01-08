@@ -53,4 +53,5 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'clear':
       clear()
   else:
-    app.run()
+    port = os.getenv('PORT') if os.getenv('PORT') is None else 8000
+    app.run(port = port)
