@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from random import choice
 import json, redis, os, sys
+from os.path import abspath, dirname
 
 # list of images in the static folder
 images = [i.strip() for i in os.listdir('static/images') if i != '' and i is not None]
@@ -11,6 +12,7 @@ rdb = redis.from_url(redis_url)
 
 # intitialize app
 app = Flask(__name__)
+app.root_path = abspath(dirname(__file__))
 
 # # test index page
 # @app.route('/')
@@ -23,10 +25,8 @@ def index():
 
   # serve a random image that we haven't labeled yet
   completed = rdb.keys()
-  print completed
   images_to_label = [i for i in images if i not in frozenset(completed)]
   image = choice(images_to_label)
-  print image
 
   return render_template('home.html', image = image, images_left = len(images_to_label))
 
