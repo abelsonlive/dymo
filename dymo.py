@@ -6,7 +6,8 @@ import json, redis, os, sys
 # images = [i.strip() for i in os.listdir('static/images') if i != '' and i is not None]
 
 # # initialize redis
-# rdb = redis.StrictRedis(host='localhost', port=6379, db=0)
+redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
+rdb = redis.from_url(redis_url)
 
 # intitialize app
 app = Flask(__name__)
