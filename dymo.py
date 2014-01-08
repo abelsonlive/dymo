@@ -43,7 +43,6 @@ def label():
   
   # extract key
   key = value['image'].strip()
-  print key, value
 
   # push to redis
   rdb.set(key, json.dumps(value))
