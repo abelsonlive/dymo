@@ -29,21 +29,21 @@ def index():
   image = choice(images_to_label)
   return render_template('home.html', image = image, images_left = len(images_to_label))
 
-# # form post for label data
-# @app.route('/label', methods=['POST'])
-# def label_image(): 
+# form post for label data
+@app.route('/label', methods=['POST'])
+def label(): 
   
-#   # parse form
-#   value = json.loads(request.form.copy()['data'])
+  # parse form
+  value = json.loads(request.form['data'])
   
-#   # extract key
-#   key = value['image']
+  # extract key
+  key = value['image']
 
-#   # push to redis
-#   rdb.set(key, json.dumps(value))
+  # push to redis
+  rdb.set(key, json.dumps(value))
 
-#   # redirect to a new image
-#   return redirect(url_for('index'))
+  # redirect to a new image
+  return redirect(url_for('index'))
 
 if __name__ == '__main__':
   port = int(os.environ.get("PORT", 5000))
