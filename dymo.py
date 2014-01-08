@@ -23,8 +23,10 @@ def index():
 
   # serve a random image that we haven't labeled yet
   completed = rdb.keys()
+  print completed
   images_to_label = [i for i in images if i not in frozenset(completed)]
   image = choice(images_to_label)
+  print image
 
   return render_template('home.html', image = image, images_left = len(images_to_label))
 
