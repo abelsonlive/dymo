@@ -1,1 +1,1 @@
-web: gunicorn dymo:app
+web: python dymo.py &
