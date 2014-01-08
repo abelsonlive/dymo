@@ -42,7 +42,7 @@ def label():
   value = json.loads(request.form['data'])
   
   # extract key
-  key = value['image']
+  key = value['image'].strip()
   print key, value
 
   # push to redis
