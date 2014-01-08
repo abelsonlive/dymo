@@ -38,20 +38,6 @@ def label_image():
   # redirect to a new image
   return redirect(url_for('index'))
 
-# helpers
-
-def dump():
-  print r"[%s]" % ",".join([rdb.get(k) for k in rdb.keys()])
-
-def clear():
-  [rdb.delete(k) for k in rdb.keys()]
-
 if __name__ == '__main__':
-  if len(sys.argv) > 1:  
-    if sys.argv[1] == 'dump':
-      dump()
-    elif sys.argv[1] == 'clear':
-      clear()
-  else:
-    port = os.getenv('PORT') if os.getenv('PORT') is None else 8000
-    app.run(port = port)
+  port = int(os.environ.get("PORT", 5000))
+  app.run(host='0.0.0.0', port=port)
