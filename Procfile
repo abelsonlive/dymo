@@ -1,1 +1,1 @@
-web: python dymo.py &
+web: python dymo.py
