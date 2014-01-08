@@ -14,11 +14,6 @@ rdb = redis.from_url(redis_url)
 app = Flask(__name__)
 app.root_path = abspath(dirname(__file__))
 
-# # test index page
-# @app.route('/')
-# def index():
-#   return render_template('index.html')
-
 # index page
 @app.route('/')
 def index():
