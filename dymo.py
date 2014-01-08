@@ -53,4 +53,4 @@ if __name__ == '__main__':
     elif sys.argv[1] == 'clear':
       clear()
   else:
-    app.run(debug=True, port=3030)
+    app.run()
