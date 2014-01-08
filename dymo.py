@@ -9,8 +9,6 @@ images = [i.strip() for i in os.listdir('static/images') if i != '' and i is not
 # # initialize redis
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
 rdb = redis.from_url(redis_url)
-rdb.set("test", "woot")
-rdb.set("test2", "woot2")
 
 # intitialize app
 app = Flask(__name__)
@@ -26,29 +24,26 @@ app.root_path = abspath(dirname(__file__))
 def index():
 
   # serve a random image that we haven't labeled yet
-  # completed = rdb.keys()
-  # images_to_label = [i for i in images if i not in frozenset(completed)]
-  # image = choice(images_to_label)
-  # return render_template('home.html', image = image, images_left = len(images_to_label))
+  completed = rdb.keys()
+  images_to_label = [i for i in images if i not in completed]
+  image = choice(images_to_label)
+  return render_template('home.html', image = image, images_left = len(images_to_label))
 
-  v = rdb.keys()
-  return " ".join(v)
-
-# form post for label data
-@app.route('/label', methods=['POST'])
-def label_image(): 
+# # form post for label data
+# @app.route('/label', methods=['POST'])
+# def label_image(): 
   
-  # parse form
-  value = json.loads(request.form.copy()['data'])
+#   # parse form
+#   value = json.loads(request.form.copy()['data'])
   
-  # extract key
-  key = value['image']
+#   # extract key
+#   key = value['image']
 
-  # push to redis
-  rdb.set(key, json.dumps(value))
+#   # push to redis
+#   rdb.set(key, json.dumps(value))
 
-  # redirect to a new image
-  return redirect(url_for('index'))
+#   # redirect to a new image
+#   return redirect(url_for('index'))
 
 if __name__ == '__main__':
   port = int(os.environ.get("PORT", 5000))
