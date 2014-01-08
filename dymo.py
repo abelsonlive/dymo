@@ -31,7 +31,7 @@ def index():
   # image = choice(images_to_label)
   # return render_template('home.html', image = image, images_left = len(images_to_label))
 
-  v = rdb.keys
+  v = rdb.keys()
   return " ".join(v)
 
 # form post for label data
