@@ -25,14 +25,16 @@ def user_index(username):
   # serve a random image that we haven't labeled yet
   completed = rdb.keys()
   images_to_label = [i for i in images if i not in completed]
-  image = choice(images_to_label)
-
-  return render_template(
-    'home.html',
-    user = username, 
-    image = image, 
-    images_left = len(images_to_label)
-  )
+  if len(images_to_label) == 0:
+    return "All images have been labeled. Thanks for your help!"
+  else:
+    image = choice(images_to_label)
+    return render_template(
+      'home.html',
+      user = username, 
+      image = image, 
+      images_left = len(images_to_label)
+    )
 
 # form post for label data
 @app.route('/label/image/', methods=['POST'])
