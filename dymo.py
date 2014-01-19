@@ -2,9 +2,19 @@ from flask import Flask, render_template, request, redirect, url_for
 from random import choice
 import json, redis, os, sys
 from os.path import abspath, dirname
+import hashlib
 
 # list of images in the static folder
 images = [i.strip() for i in os.listdir('static/images') if i != '' and i is not None]
+
+# create lookup
+lookup = {}
+for i in images:
+  hash_object = hashlib.sha1(i)
+  hex_dig = hash_object.hexdigest()
+  lookup[i] = hex_dig
+
+print lookup
 
 # # initialize redis
 redis_url = os.getenv('REDISTOGO_URL', 'redis://localhost:6379')
@@ -19,22 +29,14 @@ app.root_path = abspath(dirname(__file__))
 def index():
   return render_template('index.html')
 
-@app.route('/<username>')
-def user_index(username):
+@app.route('/<image>/')
+def user_index(image):
 
   # serve a random image that we haven't labeled yet
-  completed = rdb.keys()
-  images_to_label = [i for i in images if i not in completed]
-  if len(images_to_label) == 0:
-    return "All images have been labeled. Thanks for your help!"
-  else:
-    image = choice(images_to_label)
-    return render_template(
-      'home.html',
-      user = username, 
-      image = image, 
-      images_left = len(images_to_label)
-    )
+  return render_template(
+    'home.html',
+    image = image.strip()
+  )
 
 # form post for label data
 @app.route('/label/image/', methods=['POST'])
@@ -46,13 +48,13 @@ def label():
   # extract key
   key = value['image'].strip()
 
+  # lookup
+  secret_key = lookup[key]
+
   # push to redis
-  rdb.set(key, json.dumps(value))
+  rdb.append(key, json.dumps(value))
 
-  # redirect to a new image for this user
-  user_url = url_for('user_index', username=value['user'])
-
-  return redirect(user_url)
+  return "<h1>Thanks!</h1><p>Please input <b>%s</b> on Mechanical Turk</p>" % secret_key
 
 if __name__ == '__main__':
   port = int(os.environ.get("PORT", 5000))
